@@ -1,7 +1,7 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
 Version: 0.8.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Mon Oct 17 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2-2
+- Bump the release tag to make even with FC-4 and FC-3 branches
+
 * Tue Oct 11 2005 Paul Howarth <paul@city-fan.org> - 0.8.2-1
 - Split off separate qalculate subpackage
 - Update to 0.8.2
