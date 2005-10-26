@@ -1,7 +1,7 @@
 Summary: A multi-purpose desktop calculator for GNU/Linux
 Name: qalculate-gtk
-Version: 0.8.2
-Release: 4%{?dist}
+Version: 0.8.2.1
+Release: 1%{?dist}
 License: GPL
 Group: Applications/Engineering
 URL: http://qalculate.sourceforge.net/
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-1
+- Update to a new release that handles new behaviour in pango >= 1.10.0
+
 * Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2-4
 - Fix for yelp error (Niklas Knutsson)
 
