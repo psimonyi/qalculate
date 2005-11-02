@@ -1,7 +1,7 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
 Version: 0.8.2
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
@@ -10,6 +10,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glib2-devel, cln-devel
 BuildRequires: libxml2-devel >= 2.3.8
 BuildRequires: readline-devel, ncurses-devel
+Patch0: libqalculate-cln_fix.patch
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
@@ -38,6 +39,7 @@ This package provides the text-mode interface for Qalculate!
 
 %prep
 %setup -q
+%patch0 -p0 -b .cln_fix
 
 %build
 %configure --disable-static
@@ -73,6 +75,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Mon Oct 17 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2-3
+- Add patch to allow build with cln-1.1.10
+
 * Mon Oct 17 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2-2
 - Bump the release tag to make even with FC-4 and FC-3 branches
 
