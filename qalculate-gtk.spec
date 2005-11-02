@@ -1,7 +1,7 @@
 Summary: A multi-purpose desktop calculator for GNU/Linux
 Name: qalculate-gtk
 Version: 0.8.2.1
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 Group: Applications/Engineering
 URL: http://qalculate.sourceforge.net/
@@ -42,7 +42,7 @@ desktop-file-install --delete-original                   \
 %find_lang qalculate-gtk
 rm -rf %{buildroot}/%{_bindir}/qalculate
 
-install -D -m 0644 data/icon.xpm %{buildroot}%{_datadir}/pixmaps/qalculate.xpm
+install -Dp -m 0644 data/icon.xpm %{buildroot}%{_datadir}/pixmaps/qalculate.xpm
 
 %post
 scrollkeeper-update -q -o %{_datadir}/omf/qalculate-gtk || :
@@ -64,7 +64,10 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
-* Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-1
+* Thu Nov 2 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-2
+- Rebuild with new cln package
+
+* Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-2
 - Update to a new release that handles new behaviour in pango >= 1.10.0
 
 * Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2-4
