@@ -1,6 +1,6 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
-Version: 0.9.0
+Version: 0.9.2
 Release: 1%{?dist}
 License: GPL
 Group: System Environment/Libraries
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Tue Dec 27 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.2-1
+- Upgrade to new version
+
 * Sat Nov 05 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.0-1
 - Upgrade to new version
 
