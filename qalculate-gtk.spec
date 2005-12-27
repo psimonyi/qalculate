@@ -1,6 +1,6 @@
 Summary: A multi-purpose desktop calculator for GNU/Linux
 Name: qalculate-gtk
-Version: 0.9.0
+Version: 0.9.2
 Release: 1%{?dist}
 License: GPL
 Group: Applications/Engineering
@@ -62,6 +62,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Tue Dec 27 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.2-1
+- Upgrade to new version
+
 * Sat Nov 05 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.0.1
 - Upgrade to new version
 
