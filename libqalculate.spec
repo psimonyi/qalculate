@@ -1,7 +1,7 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
 Version: 0.9.2
-Release: 1%{?dist}
+Release: 2%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
@@ -73,6 +73,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Mon Feb 13 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.2-2
+- Rebuild for Fedora Extras 5
+
 * Tue Dec 27 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.2-1
 - Upgrade to new version
 
