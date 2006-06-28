@@ -1,7 +1,7 @@
 Summary: A multi-purpose desktop calculator for GNU/Linux
 Name: qalculate-gtk
 Version: 0.9.4
-Release: 2%{?dist}
+Release: 3%{?dist}
 License: GPL
 Group: Applications/Engineering
 URL: http://qalculate.sourceforge.net/
@@ -59,10 +59,14 @@ rm -rf %{buildroot}
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/fedora-qalculate-gtk.desktop
 %{_datadir}/pixmaps/qalculate.xpm
+%{_datadir}/pixmaps/qalculate.png
 %{_datadir}/omf/qalculate-gtk/
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Wed Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-3
+- Properly package up missing file
+
 * Wed Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-2
 - Add missing BR on libgnomeui
 
