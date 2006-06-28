@@ -1,7 +1,7 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
 Version: 0.9.4
-Release: 1%{?dist}
+Release: 3%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
@@ -74,6 +74,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Thu Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-3
+- Arbitrarily bump the release field to fix broken update path
+
 * Wed Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
 - New version 0.9.4
 
