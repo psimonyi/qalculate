@@ -1,14 +1,14 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
-Version: 0.9.3
-Release: 2%{?dist}
+Version: 0.9.4
+Release: 1%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
 Source0: http://dl.sf.net/sourceforge/qalculate/libqalculate-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires: glib2-devel, cln-devel
-BuildRequires: libxml2-devel >= 2.3.8
+BuildRequires: libxml2-devel
 BuildRequires: readline-devel, ncurses-devel
 BuildRequires: perl(XML::Parser), gettext
 
@@ -74,6 +74,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Wed Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
+- New version 0.9.4
+
 * Tue Apr 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.3-2
 - More BRs from Paul Howarth (#193481)
 
