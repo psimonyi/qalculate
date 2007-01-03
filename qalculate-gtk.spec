@@ -1,14 +1,14 @@
 Summary: A multi-purpose desktop calculator for GNU/Linux
 Name: qalculate-gtk
-Version: 0.9.4
-Release: 5%{?dist}
+Version: 0.9.5
+Release: 1%{?dist}
 License: GPL
 Group: Applications/Engineering
 URL: http://qalculate.sourceforge.net/
 Source: http://dl.sf.net/qalculate/qalculate-gtk-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: libgnome-devel, libglade2-devel, libqalculate-devel
-BuildRequires: libgnomeui-devel
+BuildRequires: libgnome-devel, libglade2-devel, libgnomeui-devel
+BuildRequires: libqalculate-devel
 BuildRequires: gettext, desktop-file-utils, scrollkeeper
 BuildRequires: perl(XML::Parser)
 Requires: gnuplot
@@ -34,15 +34,13 @@ make DESTDIR=%{buildroot} install
 
 desktop-file-install --delete-original                   \
         --vendor fedora                                  \
+        --remove-category Application                    \
         --dir %{buildroot}%{_datadir}/applications       \
 	--mode 0644				         \
-        --add-category X-Fedora                          \
         %{buildroot}%{_datadir}/applications/qalculate-gtk.desktop
 
 %find_lang qalculate-gtk
 rm -rf %{buildroot}/%{_bindir}/qalculate
-
-install -Dp -m 0644 data/icon.xpm %{buildroot}%{_datadir}/pixmaps/qalculate.xpm
 
 %post
 scrollkeeper-update -q -o %{_datadir}/omf/qalculate-gtk || :
@@ -59,12 +57,14 @@ rm -rf %{buildroot}
 %doc %{_datadir}/gnome/help/qalculate-gtk/
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/fedora-qalculate-gtk.desktop
-%{_datadir}/pixmaps/qalculate.xpm
 %{_datadir}/pixmaps/qalculate.png
 %{_datadir}/omf/qalculate-gtk/
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Tue Jan 02 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.5-1
+- New release
+
 * Mon Aug 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-5
 - Add perl(XML::Parser) BR
 
