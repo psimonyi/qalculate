@@ -1,7 +1,7 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
-Version: 0.9.4
-Release: 4%{?dist}
+Version: 0.9.5
+Release: 1%{?dist}
 License: GPL
 Group: System Environment/Libraries
 URL: http://qalculate.sourceforge.net/
@@ -30,6 +30,7 @@ with libqalculate.
 Summary: Multi-purpose calculator, text mode interface
 Group: Applications/Engineering
 Requires: %{name} = %{version}-%{release}
+Requires: pkgconfig
 
 %description -n qalculate
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -74,6 +75,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Tue Jan 02 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.5-1
+- New release
+
 * Mon Aug 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-4
 - Rebuild for FC6
 
