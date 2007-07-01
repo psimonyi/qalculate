@@ -1,6 +1,6 @@
 Summary: Multi-purpose calculator library
 Name: libqalculate
-Version: 0.9.5
+Version: 0.9.6
 Release: 1%{?dist}
 License: GPL
 Group: System Environment/Libraries
@@ -43,6 +43,8 @@ This package provides the text-mode interface for Qalculate!
 
 %build
 %configure --disable-static
+sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
+sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
 make %{?_smp_mflags}
 
 %install
@@ -75,6 +77,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Sun Jul 01 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.6-1
+- Update to new release
+
 * Tue Jan 02 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.5-1
 - New release
 
