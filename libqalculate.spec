@@ -77,6 +77,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Sat Aug 25 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.6-2
+- Rebuild
+
 * Fri Aug 03 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.6-2
 - License tag update
 
