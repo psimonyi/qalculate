@@ -1,42 +1,43 @@
-Summary: Multi-purpose calculator library
-Name: libqalculate
-Version: 0.9.6
-Release: 2%{?dist}
-License: GPLv2+
-Group: System Environment/Libraries
-URL: http://qalculate.sourceforge.net/
-Source0: http://dl.sf.net/sourceforge/qalculate/libqalculate-%{version}.tar.gz
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: glib2-devel, cln-devel
-BuildRequires: libxml2-devel
-BuildRequires: readline-devel, ncurses-devel
-BuildRequires: perl(XML::Parser), gettext
+Summary:	Multi-purpose calculator library
+Name:		libqalculate
+Version:	0.9.6
+Release:	3%{?dist}
+License:	GPLv2+
+Group:		System Environment/Libraries
+URL:		http://qalculate.sourceforge.net/
+Source0:	http://dl.sf.net/sourceforge/qalculate/%{name}-%{version}.tar.gz
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRequires:	glib2-devel, cln-devel
+BuildRequires:	libxml2-devel
+BuildRequires:	readline-devel, ncurses-devel
+BuildRequires:	perl(XML::Parser), gettext
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
 GNU/Linux
 
-%package devel
-Summary: Development tools for the Qalculate calculator library
-Group: Development/Libraries
-Requires: %{name} = %{version}-%{release}
-Requires: glib2-devel, libxml2-devel, cln-devel
+%package	devel
+Summary:	Development tools for the Qalculate calculator library
+Group:		Development/Libraries
+Requires:	%{name} = %{version}-%{release}
+Requires:	glib2-devel, libxml2-devel, cln-devel
 
-%description devel
+%description	devel
 The libqalculate-devel package contains the header files needed for development
 with libqalculate.
 
-%package -n qalculate
-Summary: Multi-purpose calculator, text mode interface
-Group: Applications/Engineering
-Requires: %{name} = %{version}-%{release}
-Requires: pkgconfig
+%package -n	qalculate
+Summary:	Multi-purpose calculator, text mode interface
+Group:		Applications/Engineering
+Requires:	%{name} = %{version}-%{release}
+Requires:	pkgconfig
 
-%description -n qalculate
+%description -n	qalculate
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
 small and simple to use but with much power and versatility underneath.
 Features include customizable functions, units, arbitrary precision, plotting.
-This package provides the text-mode interface for Qalculate!
+This package provides the text-mode interface for Qalculate! The GTK and QT
+frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
@@ -77,6 +78,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Sun Feb 10 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-3
+- Rebuild for gcc43
+
 * Sat Aug 25 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.6-2
 - Rebuild
 
