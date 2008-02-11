@@ -6,6 +6,7 @@ License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://dl.sf.net/sourceforge/qalculate/%{name}-%{version}.tar.gz
+Patch0:		libqalculate-gcc43.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
@@ -41,6 +42,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
+%patch0 -p0 -b .gcc43
 
 %build
 %configure --disable-static
