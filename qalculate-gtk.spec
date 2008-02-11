@@ -1,20 +1,20 @@
-Summary: A multi-purpose desktop calculator for GNU/Linux
-Name: qalculate-gtk
-Version: 0.9.6
-Release: 2%{?dist}
-License: GPLv2+
-Group: Applications/Engineering
-URL: http://qalculate.sourceforge.net/
-Source: http://dl.sf.net/qalculate/qalculate-gtk-%{version}.tar.gz
-Patch0: qalculate-gtk-desktop.patch
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-BuildRequires: libgnome-devel, libglade2-devel, libgnomeui-devel
-BuildRequires: libqalculate-devel
-BuildRequires: gettext, desktop-file-utils, scrollkeeper
-BuildRequires: perl(XML::Parser)
-Requires: gnuplot
-Requires(post): scrollkeeper
-Requires(postun): scrollkeeper
+Summary:	A multi-purpose desktop calculator for GNU/Linux
+Name:		qalculate-gtk
+Version:	0.9.6
+Release:	3%{?dist}
+License:	GPLv2+
+Group:		Applications/Engineering
+URL:		http://qalculate.sourceforge.net/
+Source:		http://dl.sf.net/qalculate/qalculate-gtk-%{version}.tar.gz
+Patch0:		qalculate-gtk-desktop.patch
+BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
+BuildRequires:	libqalculate-devel
+BuildRequires:	gettext, desktop-file-utils, scrollkeeper
+BuildRequires:	perl(XML::Parser)
+Requires:	gnuplot
+Requires(post):	scrollkeeper
+Requires(postun):scrollkeeper
 
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -34,12 +34,12 @@ make %{?_smp_mflags}
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
-desktop-file-install --delete-original                   \
-        --vendor fedora                                  \
-        --remove-category Application                    \
-        --dir %{buildroot}%{_datadir}/applications       \
-	--mode 0644				         \
-        %{buildroot}%{_datadir}/applications/qalculate-gtk.desktop
+desktop-file-install --delete-original			\
+	--vendor fedora					\
+	--remove-category Application			\
+	--dir %{buildroot}%{_datadir}/applications	\
+	--mode 0644					\
+	%{buildroot}%{_datadir}/applications/qalculate-gtk.desktop
 
 %find_lang qalculate-gtk
 rm -rf %{buildroot}/%{_bindir}/qalculate
@@ -64,6 +64,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Sun Feb 10 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-3
+- Rebuild for gcc43
+
 * Sat Aug 25 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.6-2
 - Rebuild
 
