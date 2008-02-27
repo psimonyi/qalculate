@@ -12,11 +12,11 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
 BuildRequires:	libqalculate-devel
 BuildRequires:	gettext, desktop-file-utils, scrollkeeper
-BuildRequires:	perl(XML::Parser)
+BuildRequires:	perl(XML::Parser), pkgconfig
 Requires:	gnuplot
 Requires(post):	scrollkeeper
 Requires(postun):scrollkeeper
-BuildRequires:	intltool libtool automake autoconf
+BuildRequires:	intltool, libtool, automake, autoconf
 
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -34,7 +34,7 @@ intltoolize --copy --force --automake
 libtoolize --force --copy
 aclocal
 autoheader
-automake
+automake --add-missing --gnu
 autoconf
 %configure 
 make %{?_smp_mflags}
