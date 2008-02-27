@@ -13,6 +13,7 @@ BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
 BuildRequires:	perl(XML::Parser), gettext
+BuildRequires:	intltool libtool automake autoconf
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
@@ -47,6 +48,12 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %patch1 -p0 -b .cln
 
 %build
+intltoolize --copy --force --automake
+libtoolize --force --copy
+aclocal
+autoheader
+automake
+autoconf
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
