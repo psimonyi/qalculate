@@ -16,6 +16,7 @@ BuildRequires:	perl(XML::Parser)
 Requires:	gnuplot
 Requires(post):	scrollkeeper
 Requires(postun):scrollkeeper
+BuildRequires:	intltool libtool automake autoconf
 
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -29,6 +30,12 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %patch1 -p0 -b .cln
 
 %build
+intltoolize --copy --force --automake
+libtoolize --force --copy
+aclocal
+autoheader
+automake
+autoconf
 %configure 
 make %{?_smp_mflags}
 										
