@@ -12,8 +12,8 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
-BuildRequires:	perl(XML::Parser), gettext
-BuildRequires:	intltool libtool automake autoconf
+BuildRequires:	perl(XML::Parser), gettext, pkgconfig
+BuildRequires:	intltool, libtool, automake, autoconf
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
