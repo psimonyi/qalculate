@@ -1,12 +1,13 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.6
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://dl.sf.net/sourceforge/qalculate/%{name}-%{version}.tar.gz
 Patch0:		libqalculate-gcc43.patch
+Patch1:		libqalculate-cln12.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
@@ -43,6 +44,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %prep
 %setup -q
 %patch0 -p0 -b .gcc43
+%patch1 -p0 -b .cln
 
 %build
 %configure --disable-static
@@ -80,6 +82,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Wed Feb 27 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-4
+- Rebuild (with patch) for cln-1.2
+
 * Sun Feb 10 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-3
 - Rebuild for gcc43
 
