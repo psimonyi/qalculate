@@ -52,7 +52,7 @@ intltoolize --copy --force --automake
 libtoolize --force --copy
 aclocal
 autoheader
-automake
+automake  --add-missing --gnu
 autoconf
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
