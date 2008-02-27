@@ -1,12 +1,13 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	0.9.6
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 URL:		http://qalculate.sourceforge.net/
 Source:		http://dl.sf.net/qalculate/qalculate-gtk-%{version}.tar.gz
 Patch0:		qalculate-gtk-desktop.patch
+Patch1:		qalculate-gtk-cln12.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
 BuildRequires:	libqalculate-devel
@@ -25,6 +26,7 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
+%patch1 -p0 -b .cln
 
 %build
 %configure 
@@ -64,6 +66,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Wed Feb 27 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-4
+- Rebuild (with patch) for cln-1.2
+
 * Sun Feb 10 2008 Deji Akingunola <dakingun@gmail.com> - 0.9.6-3
 - Rebuild for gcc43
 
