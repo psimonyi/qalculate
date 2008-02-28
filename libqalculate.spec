@@ -12,7 +12,7 @@ BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
-BuildRequires:	perl(XML::Parser), gettext, pkgconfig
+BuildRequires:	perl(XML::Parser), gettext
 BuildRequires:	intltool, libtool, automake, autoconf
 
 %description
@@ -52,7 +52,7 @@ intltoolize --copy --force --automake
 libtoolize --force --copy
 aclocal
 autoheader
-automake  --add-missing --gnu
+automake
 autoconf
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
