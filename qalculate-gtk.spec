@@ -34,7 +34,7 @@ intltoolize --copy --force --automake
 libtoolize --force --copy
 aclocal
 autoheader
-automake --add-missing --gnu
+automake
 autoconf
 %configure 
 make %{?_smp_mflags}
