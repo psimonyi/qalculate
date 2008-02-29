@@ -1,0 +1,37 @@
+--- configure.in	2007-05-18 04:36:10.000000000 -0400
++++ configure.in.new	2008-02-29 00:11:17.000000000 -0500
+@@ -63,12 +63,6 @@
+ 
+ AC_LANG([C++])
+ 
+-AC_PATH_CLN(1.1.0, [
+-     	LIBS="$LIBS $CLN_LIBS"
+-     	CPPFLAGS="$CPPFLAGS $CLN_CPPFLAGS"
+-  	AC_DEFINE(HAVE_LIBCLN,1,[If CLN can be used])
+-], AC_MSG_ERROR([No suitable installed version of CLN could be found.]))
+-
+ PKG_CHECK_MODULES(GLIB, [
+ 	glib-2.0 >= 2.4
+ 	libxml-2.0
+@@ -89,6 +83,21 @@
+ 
+ GTK_LIBS="-export-dynamic $GTK_LIBS"
+ 
++PKG_CHECK_MODULES(CLN, [ cln >= 1.2 ],
++                  [have_recent_cln=yes], [have_recent_cln=no])
++AC_SUBST(CLN_CPPFLAGS)
++AC_SUBST(CLN_LIBS)
++
++if test "$have_recent_cln" = "yes" ; then
++   AC_DEFINE(HAVE_RECENT_CLN,1,[Define if CLN can be used])
++else
++   AC_PATH_CLN(1.1.0, [
++  	AC_DEFINE(HAVE_LIBCLN11,1,[If CLN can be used])
++   ], AC_MSG_ERROR([No suitable installed version of CLN could be found.]))
++fi
++LIBS="$LIBS $CLN_LIBS"
++CPPFLAGS="$CPPFLAGS $CLN_CPPFLAGS"
++
+ PKG_CHECK_MODULES(QALCULATE, [
+ 	libqalculate >= 0.9.6
+ 	])
