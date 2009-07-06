@@ -1,13 +1,14 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.6
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://dl.sf.net/sourceforge/qalculate/%{name}-%{version}.tar.gz
 Patch0:		libqalculate-gcc43.patch
 Patch1:		libqalculate-cln12.patch
+Patch2:		libqalculate-0.9.6-pkgconfig_private.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
@@ -46,14 +47,16 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %setup -q
 %patch0 -p0 -b .gcc43
 %patch1 -p0 -b .cln
+%patch2 -p1 -b .pkgconfig_private
 
-%build
 intltoolize --copy --force --automake
 libtoolize --force --copy
 aclocal
 autoheader
 automake
 autoconf
+
+%build
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
@@ -89,6 +92,10 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Mon Jul 06 2009 Rex Dieter <rdieter@fedoraproject.org> 0.9.6-7
+- move auto*foo to prep stage
+- trim pkg-config-related deps (#509840)
+
 * Sun Jul 05 2009 Deji Akingunola <dakingun@gmail.com> - 0.9.6-6
 - Rebuild for cln-1.3.0
 
