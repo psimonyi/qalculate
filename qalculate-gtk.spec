@@ -1,22 +1,18 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	0.9.6
-Release:	7%{?dist}
+Version:	0.9.7
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 URL:		http://qalculate.sourceforge.net/
-Source:		http://dl.sf.net/qalculate/qalculate-gtk-%{version}.tar.gz
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		qalculate-gtk-desktop.patch
-Patch1:		qalculate-gtk-cln12.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
 BuildRequires:	libqalculate-devel
 BuildRequires:	gettext, desktop-file-utils, scrollkeeper
 BuildRequires:	perl(XML::Parser), pkgconfig
 Requires:	gnuplot
-Requires(post):	scrollkeeper
-Requires(postun):scrollkeeper
-BuildRequires:	intltool, libtool, automake, autoconf
 
 %description
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -27,15 +23,8 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
-%patch1 -p0 -b .cln
 
 %build
-intltoolize --copy --force --automake
-libtoolize --force --copy
-aclocal
-autoheader
-automake
-autoconf
 %configure 
 make %{?_smp_mflags}
 										
@@ -53,12 +42,6 @@ desktop-file-install --delete-original			\
 %find_lang qalculate-gtk
 rm -rf %{buildroot}/%{_bindir}/qalculate
 
-%post
-scrollkeeper-update -q -o %{_datadir}/omf/qalculate-gtk || :
-
-%postun
-scrollkeeper-update -q || :
-
 %clean
 rm -rf %{buildroot}
 
@@ -73,6 +56,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Fri Jan 29 2010 Deji Akingunola <dakingun@gmail.com> - 0.9.7-1
+- Update to 0.9.7
+
 * Sun Jul 26 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.6-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
