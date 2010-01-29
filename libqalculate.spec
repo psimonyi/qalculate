@@ -1,20 +1,17 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	0.9.6
-Release:	8%{?dist}
+Version:	0.9.7
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
-Source0:	http://dl.sf.net/sourceforge/qalculate/%{name}-%{version}.tar.gz
-Patch0:		libqalculate-gcc43.patch
-Patch1:		libqalculate-cln12.patch
-Patch2:		libqalculate-0.9.6-pkgconfig_private.patch
+Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+Patch1:		libqalculate-0.9.6-pkgconfig_private.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
 BuildRequires:	perl(XML::Parser), gettext
-BuildRequires:	intltool, libtool, automake, autoconf
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
@@ -45,16 +42,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
-%patch0 -p0 -b .gcc43
-%patch1 -p0 -b .cln
-%patch2 -p1 -b .pkgconfig_private
-
-intltoolize --copy --force --automake
-libtoolize --force --copy
-aclocal
-autoheader
-automake
-autoconf
+%patch1 -p1 -b .pkgconfig_private
 
 %build
 %configure --disable-static
@@ -92,6 +80,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Fri Jan 29 2010 Deji Akingunola <dakingun@gmail.com> - 0.9.7-1
+- Update to 0.9.7
+
 * Sat Jul 25 2009 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.6-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_12_Mass_Rebuild
 
