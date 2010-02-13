@@ -1,12 +1,12 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Patch1:		libqalculate-0.9.6-pkgconfig_private.patch
+Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
@@ -80,6 +80,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Sat Feb 13 2010 Rex Dieter <rdieter@fedorproject.org> - 0.9.7-2
+- respin pkgconfig_private patch for implicit linkage (#564920)
+
 * Fri Jan 29 2010 Deji Akingunola <dakingun@gmail.com> - 0.9.7-1
 - Update to 0.9.7
 
