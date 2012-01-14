@@ -1,7 +1,7 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	0.9.7
-Release:	3%{?dist}
+Release:	4%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 URL:		http://qalculate.sourceforge.net/
@@ -56,6 +56,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Sat Jan 14 2012 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-4
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_17_Mass_Rebuild
+
 * Tue Dec 06 2011 Adam Jackson <ajax@redhat.com> - 0.9.7-3
 - Rebuild for new libpng
 
