@@ -52,7 +52,7 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog COPYING TODO
 %doc %{_datadir}/gnome/help/qalculate-gtk/
 %{_bindir}/qalculate-gtk
-%if 0${?fedora} && 0%{?fedora} < 19
+%if 0%{?fedora} && 0%{?fedora} < 19
 %{_datadir}/applications/fedora-qalculate-gtk.desktop
 %else
 %{_datadir}/applications/qalculate-gtk.desktop
