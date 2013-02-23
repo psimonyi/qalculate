@@ -1,7 +1,7 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	0.9.7
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 URL:		http://qalculate.sourceforge.net/
@@ -33,7 +33,9 @@ rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
 desktop-file-install --delete-original			\
+%if 0%{?fedora} && 0%{?fedora} < 19
 	--vendor fedora					\
+%endif
 	--remove-category Application			\
 	--dir %{buildroot}%{_datadir}/applications	\
 	--mode 0644					\
@@ -50,12 +52,19 @@ rm -rf %{buildroot}
 %doc AUTHORS ChangeLog COPYING TODO
 %doc %{_datadir}/gnome/help/qalculate-gtk/
 %{_bindir}/qalculate-gtk
+%if 0${?fedora} && 0%{?fedora} < 19
 %{_datadir}/applications/fedora-qalculate-gtk.desktop
+%else
+%{_datadir}/applications/qalculate-gtk.desktop
+%endif
 %{_datadir}/pixmaps/qalculate.png
 %{_datadir}/omf/qalculate-gtk/
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Fri Feb 22 2013 Toshio Kuratomi <toshio@fedoraproject.org> - 0.9.7-7
+- Remove --vendor from desktop-file-install https://fedorahosted.org/fesco/ticket/1077
+
 * Thu Feb 14 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_19_Mass_Rebuild
 
