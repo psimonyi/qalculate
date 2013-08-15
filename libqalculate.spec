@@ -7,7 +7,7 @@ Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch2:		libqalculate-htmldir.patch
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
@@ -43,6 +43,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %prep
 %setup -q
 %patch1 -p1 -b .pkgconfig_private
+%patch2 -p0 -b .htmldir-unversioned
 
 %build
 %configure --disable-static
@@ -55,9 +56,6 @@ rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 %find_lang %{name}
 rm -f %{buildroot}/%{_libdir}/*.la
-
-%clean
-rm -rf %{buildroot}
 
 %post -p /sbin/ldconfig
 
@@ -80,6 +78,9 @@ rm -rf %{buildroot}
 %{_bindir}/qalc
 
 %changelog
+* Thu Aug 15 2013 Deji Akingunola <dakingun@gmail.com> - 0.9.7-8
+- Fix for versioned docdir build error
+
 * Sat Aug 03 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
