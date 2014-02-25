@@ -1,13 +1,13 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	0.9.7
-Release:	8%{?dist}
+Release:	9%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch0:		qalculate-gtk-desktop.patch
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Patch1:		qalculate-wformat-security.patch
 BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
 BuildRequires:	libqalculate-devel
 BuildRequires:	gettext, desktop-file-utils, scrollkeeper
@@ -23,13 +23,13 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
+%patch1 -p0 -b .fmt
 
 %build
 %configure 
 make %{?_smp_mflags}
 										
 %install
-rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
 
 desktop-file-install --delete-original			\
@@ -43,9 +43,6 @@ desktop-file-install --delete-original			\
 
 %find_lang qalculate-gtk
 rm -rf %{buildroot}/%{_bindir}/qalculate
-
-%clean
-rm -rf %{buildroot}
 
 %files -f qalculate-gtk.lang
 %defattr(-, root, root, -)
@@ -62,6 +59,9 @@ rm -rf %{buildroot}
 %{_datadir}/qalculate-gtk/
 
 %changelog
+* Mon Feb 24 2014 Deji Akingunola <dakingun@gmail.com> - 0.9.7-9
+- Apply the Debian patch to fix the format-security build error (Bug 1037265)
+
 * Sun Aug 04 2013 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-8
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_20_Mass_Rebuild
 
