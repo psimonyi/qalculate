@@ -3,8 +3,8 @@ Description: Fix compiling with -Werror=format-security.
 Author: Simon Ruderich <simon@ruderich.org>
 Last-Update: 2013-05-23
 
---- qalculate-gtk-0.9.7.orig/src/callbacks.cc
-+++ qalculate-gtk-0.9.7/src/callbacks.cc
+--- src/callbacks.cc
++++ src/callbacks.cc.new
 @@ -388,12 +388,12 @@ void wrap_expression_selection() {
  }
  
