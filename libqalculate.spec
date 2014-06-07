@@ -1,7 +1,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	8%{?dist}
+Release:	9%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
@@ -78,6 +78,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Sat Jun 07 2014 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-9
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_21_Mass_Rebuild
+
 * Thu Aug 15 2013 Deji Akingunola <dakingun@gmail.com> - 0.9.7-8
 - Fix for versioned docdir build error
 
