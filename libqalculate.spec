@@ -1,7 +1,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	11%{?dist}
+Release:	12%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
@@ -20,7 +20,7 @@ GNU/Linux
 %package	devel
 Summary:	Development tools for the Qalculate calculator library
 Group:		Development/Libraries
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 Requires:	glib2-devel, libxml2-devel, cln-devel
 
 %description	devel
@@ -30,7 +30,7 @@ with libqalculate.
 %package -n	qalculate
 Summary:	Multi-purpose calculator, text mode interface
 Group:		Applications/Engineering
-Requires:	%{name} = %{version}-%{release}
+Requires:	%{name}%{?_isa} = %{version}-%{release}
 Requires:	pkgconfig
 
 %description -n	qalculate
@@ -78,6 +78,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Apr 09 2015 Rex Dieter <rdieter@fedoraproject.org> 0.9.7-12
+- rebuild(gcc5), tighten subpkg deps via %%{?_isa}
+
 * Mon Feb 23 2015 Rex Dieter <rdieter@fedoraproject.org> 0.9.7-11
 - rebuild (gcc5)
 
