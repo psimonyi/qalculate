@@ -1,13 +1,15 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	13%{?dist}
+Release:	14%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
 Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
 Patch2:		libqalculate-htmldir.patch
+# don't spam errors if euroref-daily.xml doesn't (yet) exist
+Patch3:         libqalculate-0.9.7-euroref-daily.patch
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
@@ -44,6 +46,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %setup -q
 %patch1 -p1 -b .pkgconfig_private
 %patch2 -p0 -b .htmldir-unversioned
+%patch3 -p1 -b .euroref-daily
 
 %build
 %configure --disable-static
@@ -78,6 +81,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Wed Jun 17 2015 Rex Dieter <rdieter@fedoraproject.org> 0.9.7-14
+- workaround (mostly) needless stderr spam: failed to load external entity .../eurofxref-daily.xml
+
 * Wed Jun 17 2015 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 0.9.7-13
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_23_Mass_Rebuild
 
