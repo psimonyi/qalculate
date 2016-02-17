@@ -1,7 +1,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	15%{?dist}
+Release:	16%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
@@ -10,6 +10,8 @@ Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
 Patch2:		libqalculate-htmldir.patch
 # don't spam errors if euroref-daily.xml doesn't (yet) exist
 Patch3:         libqalculate-0.9.7-euroref-daily.patch
+Patch4:		gcc-6-compile.patch
+
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
@@ -47,6 +49,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %patch1 -p1 -b .pkgconfig_private
 %patch2 -p0 -b .htmldir-unversioned
 %patch3 -p1 -b .euroref-daily
+%patch4
 
 %build
 %configure --disable-static
@@ -81,6 +84,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Tue Feb 16 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-16
+- Added patch to fix GCC-6 FTBFS. Thanks Yaakov Selkowitz
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.7-15
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
