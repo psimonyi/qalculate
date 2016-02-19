@@ -1,7 +1,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	16%{?dist}
+Release:	17%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
@@ -16,6 +16,7 @@ BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel, ncurses-devel
 BuildRequires:	perl(XML::Parser), gettext
+BuildRequires:	perl(Getopt::Long)
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
@@ -72,6 +73,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %doc AUTHORS ChangeLog COPYING TODO
 %{_libdir}/libqalculate.so.*
 %{_datadir}/qalculate/
+%{_docdir}/%{name}/*
 
 %files devel
 %defattr(-,root,root,-)
@@ -84,6 +86,10 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Feb 18 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-17
+- Add BR:perl(Getopt::Long)
+- Added doc to %files section
+
 * Tue Feb 16 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-16
 - Added patch to fix GCC-6 FTBFS. Thanks Yaakov Selkowitz
 
