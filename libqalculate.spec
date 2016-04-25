@@ -1,7 +1,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.7
-Release:	17%{?dist}
+Release:	18%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 URL:		http://qalculate.sourceforge.net/
@@ -9,8 +9,9 @@ Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
 Patch2:		libqalculate-htmldir.patch
 # don't spam errors if euroref-daily.xml doesn't (yet) exist
-Patch3:         libqalculate-0.9.7-euroref-daily.patch
-Patch4:		gcc-6-compile.patch
+Patch3:     libqalculate-0.9.7-euroref-daily.patch
+Patch4:     gcc-6-compile.patch
+Patch5:     libqalculate-buffer.patch
 
 BuildRequires:	glib2-devel, cln-devel
 BuildRequires:	libxml2-devel
@@ -51,6 +52,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %patch2 -p0 -b .htmldir-unversioned
 %patch3 -p1 -b .euroref-daily
 %patch4
+%patch5 -p1 -b .buffer
 
 %build
 %configure --disable-static
@@ -86,6 +88,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Mon Apr 25 2016 Than Ngo <than@redhat.com> - 0.9.7-18
+- bz#953615, fix global variable buffer
+
 * Thu Feb 18 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-17
 - Add BR:perl(Getopt::Long)
 - Added doc to %files section
