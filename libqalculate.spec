@@ -1,21 +1,23 @@
+%global srcnm Qalculate
+
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	0.9.7
-Release:	18%{?dist}
+Version:	0.9.10
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
-URL:		http://qalculate.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-Patch1:		libqalculate-0.9.7-pkgconfig_private.patch
-Patch2:		libqalculate-htmldir.patch
-# don't spam errors if euroref-daily.xml doesn't (yet) exist
-Patch3:     libqalculate-0.9.7-euroref-daily.patch
-Patch4:     gcc-6-compile.patch
-Patch5:     libqalculate-buffer.patch
 
-BuildRequires:	glib2-devel, cln-devel
+URL:		https://qalculate.github.io/
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+
+Patch1:		libqalculate-%{version}-pkgconfig_private.patch
+
+BuildRequires:	glib2-devel
+BuildRequires:	cln-devel
+BuildRequires:	intltool
 BuildRequires:	libxml2-devel
-BuildRequires:	readline-devel, ncurses-devel
+BuildRequires:	readline-devel
+BuildRequires:	ncurses-devel
 BuildRequires:	perl(XML::Parser), gettext
 BuildRequires:	perl(Getopt::Long)
 
@@ -49,10 +51,6 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 %prep
 %setup -q
 %patch1 -p1 -b .pkgconfig_private
-%patch2 -p0 -b .htmldir-unversioned
-%patch3 -p1 -b .euroref-daily
-%patch4
-%patch5 -p1 -b .buffer
 
 %build
 %configure --disable-static
@@ -63,6 +61,7 @@ make %{?_smp_mflags}
 %install
 rm -rf %{buildroot}
 make DESTDIR=%{buildroot} install
+
 %find_lang %{name}
 rm -f %{buildroot}/%{_libdir}/*.la
 
@@ -88,6 +87,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Mon Nov 28 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.10-1
+- Update to 0.9.10
+
 * Mon Apr 25 2016 Than Ngo <than@redhat.com> - 0.9.7-18
 - bz#953615, fix global variable buffer
 
