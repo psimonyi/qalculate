@@ -1,17 +1,29 @@
+%global srcnm Qalculate
+
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	0.9.7
-Release:	14%{?dist}
+Version:	0.9.9
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
-URL:		http://qalculate.sourceforge.net/
-Source0:	http://downloads.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
+
+URL:		https://qalculate.github.io/
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+
 Patch0:		qalculate-gtk-desktop.patch
-Patch1:		qalculate-wformat-security.patch
-BuildRequires:	libgnome-devel, libglade2-devel, libgnomeui-devel
+#Patch1:		qalculate-wformat-security.patch
+
+BuildRequires:	libgnome-devel
+BuildRequires:	libglade2-devel
+BuildRequires:	libgnomeui-devel
 BuildRequires:	libqalculate-devel
-BuildRequires:	gettext, desktop-file-utils, scrollkeeper
-BuildRequires:	perl(XML::Parser), pkgconfig
+BuildRequires:	gettext
+BuildRequires:	desktop-file-utils
+BuildRequires:	scrollkeeper
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	pkgconfig
+BuildRequires:	intltool
+BuildRequires:	libappstream-glib
 Requires:	gnuplot
 
 %description
@@ -23,42 +35,44 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
-%patch1 -p0 -b .fmt
+#patch1 -p0 -b .fmt
 
 %build
 %configure 
 make %{?_smp_mflags}
-										
+
 %install
 make DESTDIR=%{buildroot} install
 
+pushd doc
+cp -pr html %{buildroot}/%{_datadir}/doc/%{name}
+popd
+
 desktop-file-install --delete-original			\
-%if 0%{?fedora} && 0%{?fedora} < 19
-	--vendor fedora					\
-%endif
 	--remove-category Application			\
 	--dir %{buildroot}%{_datadir}/applications	\
 	--mode 0644					\
 	%{buildroot}%{_datadir}/applications/qalculate-gtk.desktop
 
-%find_lang qalculate-gtk
-rm -rf %{buildroot}/%{_bindir}/qalculate
+appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
 
-%files -f qalculate-gtk.lang
-%defattr(-, root, root, -)
-%doc AUTHORS ChangeLog COPYING TODO
-%doc %{_datadir}/gnome/help/qalculate-gtk/
+%find_lang %{name}
+
+%files -f %{name}.lang
+%license COPYING
+%doc AUTHORS ChangeLog TODO
+%{_pkgdocdir}/html/*
 %{_bindir}/qalculate-gtk
-%if 0%{?fedora} && 0%{?fedora} < 19
-%{_datadir}/applications/fedora-qalculate-gtk.desktop
-%else
 %{_datadir}/applications/qalculate-gtk.desktop
-%endif
 %{_datadir}/pixmaps/qalculate.png
-%{_datadir}/omf/qalculate-gtk/
 %{_datadir}/qalculate-gtk/
+%{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Mon Nov 28 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.9-1
+- Update to 0.9.9
+- spec file cleanup
+
 * Thu Feb 04 2016 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.7-14
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_24_Mass_Rebuild
 
@@ -133,7 +147,7 @@ rm -rf %{buildroot}/%{_bindir}/qalculate
 * Tue Jan 02 2007 Deji Akingunola <dakingun@gmail.com> - 0.9.5-1
 - New release
 
-* Mon Aug 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-5
+* Wed Aug 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-5
 - Add perl(XML::Parser) BR
 
 * Mon Aug 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-4
@@ -145,7 +159,7 @@ rm -rf %{buildroot}/%{_bindir}/qalculate
 * Wed Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-2
 - Add missing BR on libgnomeui
 
-* Wed Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
+* Tue Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
 - New version 0.9.4
 
 * Thu Mar 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.3-1
@@ -160,7 +174,7 @@ rm -rf %{buildroot}/%{_bindir}/qalculate
 * Sat Nov 05 2005 Deji Akingunola <dakingun@gmail.com> - 0.9.0.1
 - Upgrade to new version
 
-* Thu Nov 2 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-2
+* Wed Nov 2 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-2
 - Rebuild with new cln package
 
 * Thu Oct 13 2005 Deji Akingunola <deji.aking@gmail.com> - 0.8.2.1-2
