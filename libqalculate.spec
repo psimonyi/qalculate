@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.10
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -87,6 +87,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Jan 12 2017 Igor Gnatenko <ignatenko@redhat.com> - 0.9.10-2
+- Rebuild for readline 7.x
+
 * Mon Nov 28 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.10-1
 - Update to 0.9.10
 
