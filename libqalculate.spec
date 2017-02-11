@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.10
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -87,6 +87,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Sat Feb 11 2017 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.10-5
+- specfile cleanup
+
 * Fri Feb 10 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
@@ -188,13 +191,13 @@ rm -f %{buildroot}/%{_libdir}/*.la
 * Mon Aug 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-4
 - Rebuild for FC6
 
-* Thu Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-3
+* Wed Jun 28 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-3
 - Arbitrarily bump the release field to fix broken update path
 
-* Wed Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
+* Tue Jun 27 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.4-1
 - New version 0.9.4
 
-* Tue Apr 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.3-2
+* Sun Apr 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.3-2
 - More BRs from Paul Howarth (#193481)
 
 * Thu Mar 30 2006 Deji Akingunola <dakingun@gmail.com> - 0.9.3-1
