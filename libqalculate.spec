@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	0.9.10
-Release:	6%{?dist}
+Release:	7%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -87,6 +87,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-7
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
+
 * Wed Jul 26 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-6
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
