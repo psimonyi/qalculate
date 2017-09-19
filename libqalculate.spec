@@ -2,15 +2,13 @@
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	0.9.10
-Release:	7%{?dist}
+Version:	2.0.0
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
 URL:		https://qalculate.github.io/
 Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-
-Patch1:		libqalculate-%{version}-pkgconfig_private.patch
 
 BuildRequires:	glib2-devel
 BuildRequires:	cln-devel
@@ -18,6 +16,9 @@ BuildRequires:	intltool
 BuildRequires:	libxml2-devel
 BuildRequires:	readline-devel
 BuildRequires:	ncurses-devel
+BuildRequires:	curl-devel
+BuildRequires:	libicu-devel
+BuildRequires:	mpfr-devel
 BuildRequires:	perl(XML::Parser), gettext
 BuildRequires:	perl(Getopt::Long)
 
@@ -50,17 +51,16 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
-%patch1 -p1 -b .pkgconfig_private
 
 %build
 %configure --disable-static
 sed -i 's|^hardcode_libdir_flag_spec=.*|hardcode_libdir_flag_spec=""|g' libtool
 sed -i 's|^runpath_var=LD_RUN_PATH|runpath_var=DIE_RPATH_DIE|g' libtool
-make %{?_smp_mflags}
+
+%make_build
 
 %install
-rm -rf %{buildroot}
-make DESTDIR=%{buildroot} install
+%make_install
 
 %find_lang %{name}
 rm -f %{buildroot}/%{_libdir}/*.la
@@ -70,23 +70,25 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%defattr(-,root,root,-)
 %doc AUTHORS ChangeLog COPYING TODO
 %{_libdir}/libqalculate.so.*
 %{_datadir}/qalculate/
 %{_docdir}/%{name}/*
 
 %files devel
-%defattr(-,root,root,-)
 %{_libdir}/libqalculate.so
 %{_libdir}/pkgconfig/libqalculate.pc
 %{_includedir}/libqalculate/
 
 %files -n qalculate
-%defattr(-,root,root,-)
 %{_bindir}/qalc
 
 %changelog
+* Fri Sep 15 2017 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.0.0-1
+- Update to 2.0.0
+- Drop older patches
+- Update buildrequires (curl-devel, libicu-devel and mpfr-devel)
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.10-7
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
