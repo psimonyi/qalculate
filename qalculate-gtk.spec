@@ -1,17 +1,17 @@
 %global srcnm Qalculate
+%global brver 2.0.0a
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	0.9.9
-Release:	5%{?dist}
+Version:	2.0.0
+Release:	1%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 
 URL:		https://qalculate.github.io/
-Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{brver}/%{name}-%{version}.tar.gz
 
 Patch0:		qalculate-gtk-desktop.patch
-#Patch1:		qalculate-wformat-security.patch
 
 BuildRequires:	libgnome-devel
 BuildRequires:	libglade2-devel
@@ -24,6 +24,7 @@ BuildRequires:	perl(XML::Parser)
 BuildRequires:	pkgconfig
 BuildRequires:	intltool
 BuildRequires:	libappstream-glib
+BuildRequires:	mpfr-devel
 Requires:	gnuplot
 
 %description
@@ -35,14 +36,13 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 %patch0 -p0 -b .desktop
-#patch1 -p0 -b .fmt
 
 %build
 %configure 
-make %{?_smp_mflags}
+%make_build
 
 %install
-make DESTDIR=%{buildroot} install
+%make_install
 
 pushd doc
 cp -pr html %{buildroot}/%{_datadir}/doc/%{name}
@@ -65,10 +65,13 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/qalculate-gtk.desktop
 %{_datadir}/pixmaps/qalculate.png
-%{_datadir}/qalculate-gtk/
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Fri Sep 15 2017 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.0.0-1
+- Update to 2.0.0
+- Add mpfr-devel as BR
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 0.9.9-5
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
