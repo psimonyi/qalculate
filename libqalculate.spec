@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	2.0.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -31,6 +31,7 @@ Summary:	Development tools for the Qalculate calculator library
 Group:		Development/Libraries
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 Requires:	glib2-devel, libxml2-devel, cln-devel
+Requires:       mpfr-devel
 
 %description	devel
 The libqalculate-devel package contains the header files needed for development
@@ -70,7 +71,8 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %postun -p /sbin/ldconfig
 
 %files -f %{name}.lang
-%doc AUTHORS ChangeLog COPYING TODO
+%doc AUTHORS ChangeLog TODO
+%license COPYING
 %{_libdir}/libqalculate.so.*
 %{_datadir}/qalculate/
 %{_docdir}/%{name}/*
@@ -84,6 +86,10 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Sep 21 2017 Rex Dieter <rdieter@fedoraproject.org> - 2.0.0-2
+- -devel: Requires: mpfr-devel
+- use %%license
+
 * Fri Sep 15 2017 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.0.0-1
 - Update to 2.0.0
 - Drop older patches
