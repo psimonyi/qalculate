@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	2.0.0
-Release:	2%{?dist}
+Release:	3%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -86,6 +86,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Thu Nov 30 2017 Pete Walter <pwalter@fedoraproject.org> - 2.0.0-3
+- Rebuild for ICU 60.1
+
 * Thu Sep 21 2017 Rex Dieter <rdieter@fedoraproject.org> - 2.0.0-2
 - -devel: Requires: mpfr-devel
 - use %%license
