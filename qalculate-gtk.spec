@@ -4,7 +4,7 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	2.0.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 Group:		Applications/Engineering
 
@@ -68,6 +68,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Fri Sep 15 2017 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.0.0-1
 - Update to 2.0.0
 - Add mpfr-devel as BR
