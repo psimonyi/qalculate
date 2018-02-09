@@ -3,7 +3,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	2.0.0
-Release:	4%{?dist}
+Release:	5%{?dist}
 License:	GPLv2+
 Group:		System Environment/Libraries
 
@@ -86,6 +86,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Fri Feb 09 2018 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2.0.0-5
+- Escape macros in %%changelog
+
 * Wed Feb 07 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
@@ -127,7 +130,7 @@ rm -f %{buildroot}/%{_libdir}/*.la
 
 * Thu Feb 18 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-17
 - Add BR:perl(Getopt::Long)
-- Added doc to %files section
+- Added doc to %%files section
 
 * Tue Feb 16 2016 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 0.9.7-16
 - Added patch to fix GCC-6 FTBFS. Thanks Yaakov Selkowitz
