@@ -1,18 +1,21 @@
+
+# This spec file uses tab uniformly. If you touch this spec, ensure that
+# you use tab in your changes.
+
 %global srcnm Qalculate
-%global brver 2.0.0a
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	2.0.0
-Release:	2%{?dist}
+Version:	2.2.1
+Release:	1%{?dist}
 License:	GPLv2+
-Group:		Applications/Engineering
 
 URL:		https://qalculate.github.io/
-Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{brver}/%{name}-%{version}.tar.gz
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 Patch0:		qalculate-gtk-desktop.patch
 
+BuildRequires:	gcc-c++
 BuildRequires:	libgnome-devel
 BuildRequires:	libglade2-devel
 BuildRequires:	libgnomeui-devel
@@ -68,6 +71,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Sat Mar 10 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.2.1-1
+- Update to 2.2.1
+
 * Fri Feb 09 2018 Fedora Release Engineering <releng@fedoraproject.org> - 2.0.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
 
