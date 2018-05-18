@@ -51,6 +51,7 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
+%patch0
 
 %build
 %configure --disable-static
