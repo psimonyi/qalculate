@@ -2,13 +2,12 @@
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	2.5.0
-Release:	2%{?dist}
+Version:	2.6.0
+Release:	1%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
-Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-Patch0:		%{name}-%{version}_fix_segfault.patch
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}a/%{name}-%{version}b.tar.gz
 
 BuildRequires:	gcc-c++
 BuildRequires:	glib2-devel
@@ -51,7 +50,6 @@ frontends are provided by qalculate-gtk and qalculate-kde packages resp.
 
 %prep
 %setup -q
-%patch0
 
 %build
 %configure --disable-static
@@ -84,6 +82,10 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Mon Jun 18 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.6.0-1
+- Update to 2.6.0
+- Drop upstreamed patch
+
 * Fri May 18 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.5.0-2
 - Fix segfault on basic operations
 
