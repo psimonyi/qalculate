@@ -3,11 +3,11 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	2.6.1
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
-Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}a/%{name}-%{version}b.tar.gz
+Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gcc-c++
 BuildRequires:	glib2-devel
@@ -82,6 +82,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Wed Jul 11 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.6.1-1
+- Fix spec file issues
+
 * Wed Jul 11 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.6.1-1
 - Update to 2.6.1
 
