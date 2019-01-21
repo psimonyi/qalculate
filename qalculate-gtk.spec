@@ -6,14 +6,12 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	2.6.2
+Version:	2.8.2
 Release:	1%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
 Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
-
-Patch0:		qalculate-gtk-desktop.patch
 
 BuildRequires:	gcc-c++
 BuildRequires:	libgnome-devel
@@ -38,7 +36,8 @@ This package provides a (GTK+) graphical interface for Qalculate!
 
 %prep
 %setup -q
-%patch0 -p0 -b .desktop
+
+sed -i 's/Qalculate!/Qalculate! (GTK)/' data/qalculate-gtk.desktop.in
 
 %build
 %configure 
@@ -71,6 +70,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Mon Jan 21 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.8.2-1
+- Update to 2.8.2
+
 * Wed Aug 15 2018 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 2.6.2-1
 - Update to 2.6.2
 
