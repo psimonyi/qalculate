@@ -1,11 +1,11 @@
 %global srcnm Qalculate
-%global libversion 20
-%global libsymlink 0.2
+%global libversion 21
+%global libsymlink 0.0
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	2.8.2
-Release:	4%{?dist}
+Version:	3.0.0
+Release:	1%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
@@ -21,7 +21,8 @@ BuildRequires:	ncurses-devel
 BuildRequires:	curl-devel
 BuildRequires:	libicu-devel
 BuildRequires:	mpfr-devel
-BuildRequires:	perl(XML::Parser), gettext
+BuildRequires:	perl(XML::Parser)
+BuildRequires:	gettext
 BuildRequires:	perl(Getopt::Long)
 
 %description
@@ -31,7 +32,9 @@ GNU/Linux
 %package	devel
 Summary:	Development tools for the Qalculate calculator library
 Requires:	%{name}%{?_isa} = %{version}-%{release}
-Requires:	glib2-devel, libxml2-devel, cln-devel
+Requires:	glib2-devel
+Requires:	libxml2-devel
+Requires:	cln-devel
 Requires:	mpfr-devel
 
 %description	devel
@@ -85,6 +88,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Sat Mar 23 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.0.0-1
+- Update to 3.0.0
+
 * Sun Feb 17 2019 Igor Gnatenko <ignatenkobrain@fedoraproject.org> - 2.8.2-4
 - Rebuild for readline 8.0
 
