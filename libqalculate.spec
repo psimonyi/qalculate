@@ -1,10 +1,10 @@
 %global srcnm Qalculate
 %global libversion 21
-%global libsymlink 0.0
+%global libsymlink 1.0
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	3.0.0
+Version:	3.1.0
 Release:	1%{?dist}
 License:	GPLv2+
 
@@ -45,6 +45,8 @@ with libqalculate.
 Summary:	Multi-purpose calculator, text mode interface
 Requires:	%{name}%{?_isa} = %{version}-%{release}
 Requires:	pkgconfig
+
+Provides:	qalc
 
 %description -n	qalculate
 Qalculate! is a multi-purpose desktop calculator for GNU/Linux. It is
@@ -88,6 +90,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Sat Apr 20 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.1.0-1
+- Update to 3.1.0
+
 * Sat Mar 23 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.0.0-1
 - Update to 3.0.0
 
