@@ -6,7 +6,7 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	3.0.0
+Version:	3.1.0
 Release:	1%{?dist}
 License:	GPLv2+
 
@@ -38,6 +38,8 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %setup -q
 
 sed -i 's/Qalculate!/Qalculate! (GTK)/' data/qalculate-gtk.desktop.in
+sed -i 's/<i>//' data/qalculate-gtk.appdata.xml.in
+sed -i 's/<\/i>//' data/qalculate-gtk.appdata.xml.in
 
 %build
 %configure 
@@ -70,6 +72,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_datadir}/appdata/%{name}.appdata.xml
 
 %changelog
+* Sun Apr 21 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.1.0-1
+- Update to 3.1.0
+
 * Tue Mar 19 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.0.0-1
 - Update to 3.0.0
 
