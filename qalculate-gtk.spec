@@ -6,7 +6,7 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	3.3.0
+Version:	3.6.0
 Release:	1%{?dist}
 License:	GPLv2+
 
@@ -14,9 +14,7 @@ URL:		https://qalculate.github.io/
 Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:	gcc-c++
-BuildRequires:	libgnome-devel
-BuildRequires:	libglade2-devel
-BuildRequires:	libgnomeui-devel
+BuildRequires:	gtk3-devel
 BuildRequires:	libqalculate-devel
 BuildRequires:	gettext
 BuildRequires:	desktop-file-utils
@@ -58,7 +56,7 @@ desktop-file-install --delete-original			\
 	--mode 0644					\
 	%{buildroot}%{_datadir}/applications/qalculate-gtk.desktop
 
-appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata.xml
+appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 
 %find_lang %{name}
 
@@ -69,9 +67,13 @@ appstream-util validate-relax --nonet %{buildroot}/%{_datadir}/appdata/*.appdata
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/qalculate-gtk.desktop
 %{_datadir}/pixmaps/qalculate.png
-%{_datadir}/appdata/%{name}.appdata.xml
+%{_metainfodir}/%{name}.appdata.xml
+%{_mandir}/man1/%{name}.1*
 
 %changelog
+* Fri Nov 29 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.6.0-1
+- Update to 3.6.0
+
 * Fri Aug 16 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.3.0-1
 - Update to 3.3.0
 
