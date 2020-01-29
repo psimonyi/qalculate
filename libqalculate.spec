@@ -5,7 +5,7 @@
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
 Version:	3.6.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
@@ -91,6 +91,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Fri Nov 29 2019 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.6.0-1
 - Update to 3.6.0
 
