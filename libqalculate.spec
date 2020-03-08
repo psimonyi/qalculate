@@ -1,11 +1,11 @@
 %global srcnm Qalculate
 %global libversion 21
-%global libsymlink 5.0
+%global libsymlink 7.0
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	3.6.0
-Release:	2%{?dist}
+Version:	3.8.0
+Release:	1%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
@@ -80,7 +80,6 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_libdir}/libqalculate.so.%{libversion}.%{libsymlink}
 %{_datadir}/qalculate/
 %{_mandir}/man1/qalc.1.*
-%{_docdir}/%{name}/*
 
 %files devel
 %{_libdir}/libqalculate.so
@@ -91,6 +90,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Sat Mar 07 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.8.0-1
+- Update to 3.8.0
+
 * Wed Jan 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 3.6.0-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
 
