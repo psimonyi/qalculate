@@ -6,7 +6,7 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	3.9.0
+Version:	3.10.0
 Release:	1%{?dist}
 License:	GPLv2+
 
@@ -67,10 +67,16 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 %{_bindir}/qalculate-gtk
 %{_datadir}/applications/qalculate-gtk.desktop
 %{_datadir}/icons/hicolor/*/*/qalculate*
+%{_libdir}/qalculate-search-provider
+%{_datadir}/dbus-1/services/io.github.Qalculate.SearchProvider.service
+%{_datadir}/gnome-shell/search-providers/io.github.Qalculate.search-provider.ini
 %{_metainfodir}/%{name}.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Wed May 13 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.10.0-1
+- Update to 3.10.0
+
 * Tue Apr 21 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.9.0-1
 - Update to 3.9.0
 
