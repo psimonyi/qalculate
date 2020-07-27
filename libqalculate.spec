@@ -1,10 +1,10 @@
 %global srcnm Qalculate
 %global libversion 21
-%global libsymlink 9.0
+%global libsymlink 9.1
 
 Summary:	Multi-purpose calculator library
 Name:		libqalculate
-Version:	3.11.0
+Version:	3.12.0
 Release:	1%{?dist}
 License:	GPLv2+
 
