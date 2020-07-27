@@ -90,6 +90,9 @@ rm -f %{buildroot}/%{_libdir}/*.la
 %{_bindir}/qalc
 
 %changelog
+* Mon Jul 27 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.12.0-1
+- Update to 3.12.0
+
 * Mon Jun 22 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.11.0-1
 - Update to 3.11.0
 
