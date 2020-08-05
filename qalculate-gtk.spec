@@ -6,7 +6,7 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	3.12.0
+Version:	3.12.1
 Release:	1%{?dist}
 License:	GPLv2+
 
@@ -74,6 +74,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Tue Aug 04 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.12.1-1
+- Update to 3.12.1
+
 * Mon Jul 27 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.12.0-1
 - Update to 3.12.0
 
