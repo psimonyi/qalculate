@@ -24,6 +24,7 @@ BuildRequires:	mpfr-devel
 BuildRequires:	perl(XML::Parser)
 BuildRequires:	gettext
 BuildRequires:	perl(Getopt::Long)
+BuildRequires: make
 
 %description
 This library underpins the Qalculate! multi-purpose desktop calculator for
