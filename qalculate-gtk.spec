@@ -13,6 +13,7 @@ License:	GPLv2+
 URL:		https://qalculate.github.io/
 Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires: make
 BuildRequires:	gcc-c++
 BuildRequires:	gtk3-devel
 BuildRequires:	libqalculate-devel
