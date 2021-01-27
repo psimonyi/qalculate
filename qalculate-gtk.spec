@@ -7,7 +7,7 @@
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
 Version:	3.16.0
-Release:	1%{?dist}
+Release:	2%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
@@ -74,6 +74,9 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.16.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Mon Jan 04 2021 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.16.0-1
 - Update to 3.16.0
 
