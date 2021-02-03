@@ -6,13 +6,14 @@
 
 Summary:	A multi-purpose desktop calculator for GNU/Linux
 Name:		qalculate-gtk
-Version:	3.13.0
-Release:	1.1%{?dist}
+Version:	3.16.0
+Release:	2%{?dist}
 License:	GPLv2+
 
 URL:		https://qalculate.github.io/
 Source0:	https://github.com/%{srcnm}/%{name}/releases/download/v%{version}/%{name}-%{version}.tar.gz
 
+BuildRequires: make
 BuildRequires:	gcc-c++
 BuildRequires:	gtk3-devel
 BuildRequires:	libqalculate-devel
@@ -35,7 +36,6 @@ This package provides a (GTK+) graphical interface for Qalculate!
 %prep
 %setup -q
 
-#sed -i 's/Qalculate!/Qalculate! (GTK)/' data/qalculate-gtk.desktop.in
 sed -i 's/<i>//' data/qalculate-gtk.appdata.xml.in
 sed -i 's/<\/i>//' data/qalculate-gtk.appdata.xml.in
 
@@ -74,6 +74,21 @@ appstream-util validate-relax --nonet %{buildroot}/%{_metainfodir}/*.appdata.xml
 %{_mandir}/man1/%{name}.1*
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 3.16.0-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
+* Mon Jan 04 2021 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.16.0-1
+- Update to 3.16.0
+
+* Mon Nov 23 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.15.0-1
+- Update to 3.15.0
+
+* Wed Oct 28 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.14.0-1
+- Drop the gtk in desktop file
+
+* Tue Oct 27 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.14.0-1
+- Update to 3.14.0
+
 * Tue Sep 22 2020 Mukundan Ragavan <nonamedotc@fedoraproject.org> - 3.13.0-1
 - Update to 3.13.0
 
